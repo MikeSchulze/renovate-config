@@ -13,9 +13,6 @@
   "prCreation": "not-pending",
   "prConcurrentLimit": 3,
   "branchConcurrentLimit": 5,
-  "constraints": {
-    "dotnet": "8.*"
-  },
   "commitMessagePrefix": "🤖",
   "customManagers": [
     {
@@ -38,22 +35,6 @@
     {
       "description": "Enable automerge",
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
-    },
-    {
-      "description": "Block all updates to global.json",
-      "matchFiles": ["global.json"],
-      "enabled": false
-    },
-    {
-      "description": "Block all packages with .NET 9 dependencies",
-      "matchDatasources": ["nuget"],
-      "allowedVersions": "!/(?:^9\\.|beta.*9|preview.*9|rc.*9|alpha.*9)/i"
-    },
-    {
-      "description": "Allow patch updates within .NET 8 ecosystem",
-      "matchDatasources": ["nuget"],
-      "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true
     },
     {
