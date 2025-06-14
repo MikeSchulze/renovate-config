@@ -1,0 +1,57 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared Renovate configuration for GdUnit4 projects",
+  "assigneesFromCodeOwners": false,
+  "reviewersFromCodeOwners": false,
+  "assignAutomerge": true,
+  "assignees": ["MikeSchulze"],
+  "reviewers": ["MikeSchulze"],
+  "gitAuthor": "Development Bot <dev-bot@my-software-company.com>",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "<img src=\"https://github.com/MikeSchulze/gdUnit4/blob/master/icon.png\" width=\"16\" height=\"16\"> GdUnit4 CI Dependencies Dashboard",
+  "dependencyDashboardHeader": "This dashboard tracks Godot Engine and CI dependency updates.\n\n- 🎮 **Godot versions** are automatically updated from GitHub releases\n- 📅 **Updates run** every Monday morning\n- 🧪 **Testing** is required before merging major updates",
+  "prCreation": "not-pending",
+  "prConcurrentLimit": 3,
+  "branchConcurrentLimit": 5,
+  "commitMessagePrefix": "🤖",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update Godot matrix version and status",
+      "managerFilePatterns": [
+        "/^\\.github/workflows/ci-pr\\.yml$/",
+        "/^\\.github/workflows/ci-pr-publish-report\\.yml$/"
+      ],
+      "matchStrings": [
+        "(?<fullMatch>(?<indentation>\\s*)- godot-version: '(?<godotVersion>[0-9.]+)'\\s*\\n\\s*godot-status: '(?<godotStatus>\\w+)')"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "godotengine/godot-builds",
+      "currentValueTemplate": "{{godotVersion}}-{{godotStatus}}",
+      "autoReplaceStringTemplate": "{{indentation}}- godot-version: '{{replace '^(\\d+)\\.(\\d+).*' '$1.$2' newValue}}'{{indentation}}  godot-status: '{{replace '^\\d+\\.\\d+-(\\w+\\d*).*' '$1' newValue}}'"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchPackageNames": [
+        "godotengine/godot-builds"
+      ],
+      "versioning": "regex:^(?<major>\\d+)(\\.(?<minor>\\d+))?(\\.(?<patch>\\d+))?-(?<prerelease>.*)?$",
+      "groupName": "Godot Engine",
+      "commitMessageTopic": "Godot Engine",
+      "commitMessageExtra": "{{currentValue}} → {{newValue}} ({{updateType}})",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "merge",
+      "minimumReleaseAge": "12 hours",
+      "labels": [
+        "godot-prerelease",
+        "ci"
+      ],
+      "prBodyTemplate": "# Why\n\nUpdate CI to the latest Godot prerelease version to maintain compatibility and test new features early.\n\n# What\n\n**Version Update**: Godot Engine prerelease version (see PR title for exact versions)\n\n**Files Updated**:\n- `.github/workflows/ci-pr.yml`\n- `.github/workflows/ci-pr-publish-report.yml`\n\n## <img src=\"https://github.com/MikeSchulze/renovate_config/blob/master/godot.png\" width=\"16\" height=\"16\"> Release Information\n\nCheck the [Godot builds release page](https://github.com/godotengine/godot-builds/releases) for the latest release details and improvements.\n\n## 🛠️ Update to latest Godot PreRelease version\n\n- **CI Compatibility**: Ensures our test matrix uses the latest Godot version\n- **Early Testing**: Helps identify compatibility issues before stable release\n- **Development Flow**: Keeps our development environment current\n\n---\n*Auto-merge enabled after CI passes • Renovate 🤖*"
+    }
+  ]
+}
