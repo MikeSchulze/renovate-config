@@ -36,6 +36,11 @@
   ],
   "packageRules": [
     {
+      "description": "Enable automerge",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
+    {
       "description": "Block all updates to global.json",
       "matchFiles": ["global.json"],
       "enabled": false
