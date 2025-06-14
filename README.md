@@ -1,8 +1,8 @@
-# Renovate Shared Configuration
+# <img src="https://github.com/MikeSchulze/gdUnit4/blob/master/icon.png" width="32" height="32"> Renovate Shared Configuration for GdUnit4
 
 This repository contains shared Renovate configurations for our GdUnit4 projects.
 
-## <img src="https://github.com/MikeSchulze/gdUnit4/blob/master/icon.png" width="16" height="16"> What it does
+## What it does
 
 - **Automatically updates Godot Engine PrRelease versions** in CI workflows
 - **Monitors Godot prerelease versions** (dev builds)
