@@ -8,7 +8,7 @@
   "reviewers": ["MikeSchulze"],
   "gitAuthor": "Development Bot <dev-bot@my-software-company.com>",
   "dependencyDashboard": true,
-  "dependencyDashboardTitle": "<img src=\"https://github.com/MikeSchulze/gdUnit4/blob/master/icon.png\" width=\"16\" height=\"16\"> GdUnit4 CI Dependencies Dashboard",
+  "dependencyDashboardTitle": "⚙️ GdUnit4 CI Dependencies Dashboard",
   "dependencyDashboardHeader": "This dashboard tracks Godot Engine and CI dependency updates.\n\n- 🎮 **Godot versions** are automatically updated from GitHub releases\n- 📅 **Updates run** every Monday morning\n- 🧪 **Testing** is required before merging major updates",
   "prCreation": "not-pending",
   "prConcurrentLimit": 3,
