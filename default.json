@@ -38,6 +38,13 @@
       "automerge": true
     },
     {
+      "description": "Pin dotnet-sdk to version 9.x",
+      "matchPackageNames": [
+        "dotnet-sdk"
+      ],
+      "allowedVersions": "<10.0.0"
+    },
+    {
       "enabled": false,
       "matchManagers": [
         "custom.regex"
